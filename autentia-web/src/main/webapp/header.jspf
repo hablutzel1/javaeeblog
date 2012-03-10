@@ -1,0 +1,130 @@
+<%@ page import="java.net.URL" %>
+<%@ page import="com.autentia.demo.web.servlet.LoginServlet" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ page contentType="text/html; charset=utf-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Bienvenidos al blog</title>
+
+    <!-- Mobile viewport optimisation -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- (en) Add your meta data here -->
+    <!-- (de) Fuegen Sie hier ihre Meta-Daten ein -->
+
+    <link href="./css/flexible-columns.css" rel="stylesheet" type="text/css"/>
+    <!--[if lte IE 7]>
+    <link href="./css/yaml/core/iehacks.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="demo-2col">
+<%--<ul class="ym-skiplinks">--%>
+    <%--<li><a class="ym-skip" href="#nav">Skip to navigation (Press Enter)</a></li>--%>
+    <%--<li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>--%>
+<%--</ul>--%>
+
+
+<div class="ym-wrapper">
+    <div class="ym-wbox">
+
+<header>
+    <div>
+
+        <c:choose>
+            <c:when test="${!empty username}">
+                <a href="logout">Cerrar sesión</a>
+            </c:when>
+            <c:otherwise>
+                <a href="login">Ingresar</a>
+            </c:otherwise>
+        </c:choose>
+
+
+
+    </div>
+    <a href="<%  out.print(LoginServlet.BASE_CONTEXT); %>"><h1>Blog J2EE</h1></a>
+</header>
+
+        <c:if test="${!empty username}">
+
+        <nav id="nav">
+            <div class="ym-hlist" >
+                <ul>
+
+                        
+
+                    <%
+
+
+                        String baseUrl = (String) request.getAttribute("javax.servlet.forward.request_uri");
+                        String fullURL =  "xxx";
+                        if (baseUrl != null) {
+                            fullURL = new StringBuffer(baseUrl).append("?").append(
+                                    request.getQueryString()).toString();
+                        }
+
+
+
+                        if (fullURL.endsWith("posts?crear")){
+                            %>
+                               <li class="active"><strong>Crear entrada</strong></li>
+                            <%
+                        } else {
+                            %>
+                               <li><a class="" href="posts?crear">Crear entrada</a></li>
+                              <%
+                        }
+
+                        if (fullURL.endsWith("posts?list")){
+                              %>
+                    <li class="active"><strong>Listar entradas</strong></li>
+                    <%
+                    } else {
+                    %>
+                    <li><a class="" href="posts?list">Listar entradas</a></li>
+                    <%
+                        }
+
+                    %>
+
+
+                                        
+                </ul>
+            </div>
+        </nav>
+
+        </c:if>
+
+
+        <div id="main">
+
+<%--@elvariable id="message" type="java.lang.String"--%>
+<c:if  test="${!empty success}">
+
+    <div class="box success">
+            ${success}
+    </div>
+
+
+    <%
+        session.removeAttribute("success");
+    %>
+</c:if>
+
+<c:if  test="${!empty error}">
+    <div class="box error">
+            ${error}
+    </div>
+
+    <%
+        session.removeAttribute("error");
+    %>
+
+</c:if>
+    <br />
