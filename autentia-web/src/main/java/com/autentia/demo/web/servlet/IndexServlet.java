@@ -47,11 +47,13 @@ public class IndexServlet extends HttpServlet {
         //  get all posts, display them in view
         List<Post> allPosts = postsManager.getAllPosts();
 
-        Post principalPost = allPosts.get(0);
-        request.setAttribute("principalPost",principalPost);
-        allPosts.remove(0);
+        if (allPosts.size() >0) {
+            Post principalPost = allPosts.get(0);
+            request.setAttribute("principalPost", principalPost);
+            allPosts.remove(0);
 
-        request.setAttribute("posts", allPosts);
+            request.setAttribute("posts", allPosts);
+        }
 
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 

@@ -1,13 +1,14 @@
 <%@ include file="../header.jspf" %>
 
 
-<form action="posts?crear" method="post" class="ym-form">
+<form action="posts?crear" method="post" class="ym-form" >
 
     <div class="ym-fbox-text">
         <label for="titulo">Titulo</label>
         <input id="titulo" type="text" name="titulo"/>
 
     </div>
+
 
     <div class="ym-fbox-text">
         <label for="contenido">Contenido</label>

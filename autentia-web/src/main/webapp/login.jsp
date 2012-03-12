@@ -1,8 +1,6 @@
 <%@ include file="header.jspf" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-
-
-
+<%@ page contentType="text/html; charset=utf-8" %>
 
 
 <form class="ym-form"  action="login" method="post">

@@ -36,11 +36,14 @@ public class PostsServlet extends BaseServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
         if (isUserLoggedIn(request)) {         //  redirect to view
 
             //  persist post
             Post post = new Post();
-            post.setTitulo(request.getParameter("titulo"));
+            String titulo = request.getParameter("titulo");
+            post.setTitulo(titulo);
             post.setContenido(request.getParameter("contenido"));
             postsManager.savePost(post);
 
