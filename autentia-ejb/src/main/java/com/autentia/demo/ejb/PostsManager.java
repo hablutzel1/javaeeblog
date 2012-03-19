@@ -23,11 +23,14 @@ public interface PostsManager {
      */
     Post savePost(Post post);
 
-
     /**
      * Get all posts ordered by date, from latest (index 0) to older (last index)
      *
      * @return
      */
     List<Post> getAllPosts();
+
+
+
+    Post getPost(int id);
 }

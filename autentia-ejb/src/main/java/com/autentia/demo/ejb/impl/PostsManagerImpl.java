@@ -35,4 +35,8 @@ public class PostsManagerImpl implements PostsManager {
 
         return em.createQuery("from Post order by fechaPublicado desc ").getResultList();
     }
+
+    public Post getPost(int id) {
+        return em.find(Post.class, id);
+    }
 }

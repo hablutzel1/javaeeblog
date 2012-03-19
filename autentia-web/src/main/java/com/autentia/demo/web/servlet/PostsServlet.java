@@ -2,6 +2,7 @@ package com.autentia.demo.web.servlet;
 
 import com.autentia.demo.ejb.PostsManager;
 import com.autentia.demo.ejb.domain.Post;
+import com.sun.xml.internal.ws.util.StringUtils;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -36,7 +37,7 @@ public class PostsServlet extends BaseServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
         if (isUserLoggedIn(request)) {         //  redirect to view
 
@@ -69,8 +70,19 @@ public class PostsServlet extends BaseServlet {
                 getServletContext().getRequestDispatcher("/posts/crear.jsp").forward(request, response);
             }
 
-        } else {
-            response.sendRedirect(LoginServlet.BASE_CONTEXT);
+        }
+
+        if (request.getParameter("ver") != null) {
+
+            String postId = request.getParameter("id");
+
+            // TODO find post
+
+            Post post = postsManager.getPost(Integer.parseInt(postId));
+
+            request.setAttribute("post", post);
+
+            getServletContext().getRequestDispatcher("/posts/ver.jsp").forward(request, response);
 
         }
 
