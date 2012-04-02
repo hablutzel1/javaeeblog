@@ -38,7 +38,7 @@ public class PostsServlet extends BaseServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
         request.setCharacterEncoding("UTF-8");
         if (isUserLoggedIn(request)) {         //  redirect to view
 
@@ -67,21 +67,23 @@ public class PostsServlet extends BaseServlet {
                 request.setAttribute("posts", allPosts);
 
                 getServletContext().getRequestDispatcher("/posts/lista.jsp").forward(request, response);
-            } else if (request.getParameter("view") != null) {
-
-
-                String id = request.getParameter("id");
-                Post post = postsManager.getPost(Integer.parseInt(id));
-
-                request.setAttribute("post", post);
-                getServletContext().getRequestDispatcher("/posts/view.jsp").forward(request, response);
-
             } else if (request.getParameter("crear") != null) {
                 getServletContext().getRequestDispatcher("/posts/crear.jsp").forward(request, response);
             }
 
-        } else {
-            response.sendRedirect(LoginServlet.BASE_CONTEXT);
+        }
+
+        if (request.getParameter("ver") != null) {
+
+            String postId = request.getParameter("id");
+
+            // TODO find post
+
+            Post post = postsManager.getPost(Integer.parseInt(postId));
+
+            request.setAttribute("post", post);
+
+            getServletContext().getRequestDispatcher("/posts/ver.jsp").forward(request, response);
 
         }
 

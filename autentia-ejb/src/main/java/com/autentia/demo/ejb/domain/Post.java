@@ -39,7 +39,7 @@ public class Post {
     private String contenido;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue()
     public int getId() {
         return id;
     }
