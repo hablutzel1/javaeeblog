@@ -32,7 +32,7 @@ public class LogoutServlet extends HttpServlet {
             Object username = session.getAttribute("username");
             if (username != null) {
                 logger.log(Level.INFO, "Logging out " + username);
-                session.setAttribute("success", "Se cerro sesión exitosamente" );
+                session.setAttribute("success", "Se cerro sesiÃ³n exitosamente" );
                 session.removeAttribute("username");
             }
         }

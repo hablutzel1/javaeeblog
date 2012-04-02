@@ -30,6 +30,13 @@ public class PostsManagerImpl implements PostsManager {
         return  post;
     }
 
+    @Override
+    public Post getPost(int id) {
+
+        return em.find(Post.class, id);
+
+    }
+
     public List<Post> getAllPosts() {
 
 

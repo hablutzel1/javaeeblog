@@ -29,7 +29,7 @@
             <groupId>com.autentia.demo</groupId>
             <artifactId>autentia-ejb</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <!-- ================= External dependecies ================= -->
@@ -72,6 +72,12 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.3</version>
         </dependency>
     </dependencies>
 

@@ -3,6 +3,7 @@ package com.autentia.demo.web.servlet;
 import com.autentia.demo.ejb.PostsManager;
 import com.autentia.demo.ejb.domain.Post;
 
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -21,22 +22,23 @@ import java.util.List;
  */
 public class PostsServlet extends BaseServlet {
 
+    @EJB
     private PostsManager postsManager;
 
     public PostsServlet() {
 
-        final Context context;
-        try {
-            context = new InitialContext();
-            postsManager = (PostsManager) context.lookup("PostsManagerImpl/local");
-
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+//        final Context context;
+//        try {
+//            context = new InitialContext();
+//            postsManager = (PostsManager) context.lookup("PostsManagerImpl/local");
+//
+//        } catch (NamingException e) {
+//            e.printStackTrace();
+//        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
         if (isUserLoggedIn(request)) {         //  redirect to view
 
@@ -65,6 +67,15 @@ public class PostsServlet extends BaseServlet {
                 request.setAttribute("posts", allPosts);
 
                 getServletContext().getRequestDispatcher("/posts/lista.jsp").forward(request, response);
+            } else if (request.getParameter("view") != null) {
+
+
+                String id = request.getParameter("id");
+                Post post = postsManager.getPost(Integer.parseInt(id));
+
+                request.setAttribute("post", post);
+                getServletContext().getRequestDispatcher("/posts/view.jsp").forward(request, response);
+
             } else if (request.getParameter("crear") != null) {
                 getServletContext().getRequestDispatcher("/posts/crear.jsp").forward(request, response);
             }

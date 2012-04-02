@@ -3,6 +3,7 @@ package com.autentia.demo.web.servlet;
 import com.autentia.demo.ejb.UsuariosManager;
 import com.autentia.demo.ejb.domain.Usuario;
 
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -24,18 +25,20 @@ public class LoginServlet extends HttpServlet {
 
 
     public static final String BASE_CONTEXT = "/autentia-web/";
+
+    @EJB
     private UsuariosManager usuariosManager;
 
     public LoginServlet() {
 
-        final Context context;
-        try {
-            context = new InitialContext();
-            usuariosManager = (UsuariosManager) context.lookup("UsuariosManagerImpl/local");
-
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+//        final Context context;
+//        try {
+//            context = new InitialContext();
+//            usuariosManager = (UsuariosManager) context.lookup("UsuariosManagerImpl/local");
+//
+//        } catch (NamingException e) {
+//            e.printStackTrace();
+//        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,7 +54,7 @@ public class LoginServlet extends HttpServlet {
         if (usuario1 != null) { //  if user exists put the username in session
 
             if (!usuario1.getPassword().equals(password)) { // pasowrd incorrect
-                request.setAttribute("error", "Contraseña incorrecta");
+                request.setAttribute("error", "ContraseÃ±a incorrecta");
                 getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
             } else {
 

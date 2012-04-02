@@ -12,9 +12,7 @@
 
     <div class="ym-fbox-text">
         <label for="contenido">Contenido</label>
-        <textarea rows="20" cols="20" name="contenido" id="contenido">
-
-        </textarea>
+        <textarea rows="20" cols="20" name="contenido" id="contenido"></textarea>
 
     </div>
 

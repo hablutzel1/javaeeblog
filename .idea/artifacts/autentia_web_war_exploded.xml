@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="autentia-web:war exploded">
+    <output-path>$PROJECT_DIR$/autentia-web/target/autentia-web</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="autentia-web/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="autentia-web" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="autentia-ejb-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="autentia-ejb" />
+          </element>
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.3" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

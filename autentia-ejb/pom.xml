@@ -22,12 +22,20 @@
         <!-- ================= Internal dependecies ================= -->
 
         <!-- ================= External dependecies ================= -->
+        <!--<dependency>-->
+            <!--<groupId>javax.persistence</groupId>-->
+            <!--<artifactId>persistence-api</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>ejb3-persistence</artifactId>
             <scope>provided</scope>
+            <version>3.3.2.Beta1</version>
         </dependency>
+
         <dependency>
             <groupId>jboss</groupId>
             <artifactId>jboss-ejb-api</artifactId>
